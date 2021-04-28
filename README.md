@@ -1,4 +1,4 @@
 # fuel_app
 
-A new Flutter project.
+A Flutter project for login and fuel price.
 
