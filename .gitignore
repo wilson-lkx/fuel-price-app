@@ -15,7 +15,6 @@
 *.iws
 .idea/
 
-.dart_tool/
 build/
 test/
 
