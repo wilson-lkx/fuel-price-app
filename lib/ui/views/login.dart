@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_app/model/home.model.dart';
 import 'package:fuel_app/ui/theme/global.dart';
+import 'package:fuel_app/ui/views/fuel_price_display.dart';
+import 'package:fuel_app/ui/views/home_user.dart';
 import 'package:fuel_app/ui/widgets/button_widget.dart';
 import 'package:fuel_app/ui/widgets/textfield_widget.dart';
 import 'package:fuel_app/ui/widgets/wave_widget.dart';
@@ -14,8 +16,6 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   String email;
   String password;
-
-  bool isValidEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
                   prefixIconData: Icons.mail_outline,
                   suffixIconData: model.isValid ? Icons.check : null,
                   onChanged: (value) {
-                    model.isValidEmail(value);
+                    email = value;
                   },
                 ),
                 SizedBox(
@@ -81,6 +81,9 @@ class _LoginViewState extends State<LoginView> {
                   suffixIconData: model.isVisible
                       ? Icons.visibility
                       : Icons.visibility_off,
+                  onChanged: (value) {
+                    password = value;
+                  },
                 ),
                 SizedBox(
                   height: 20.0,
@@ -88,6 +91,19 @@ class _LoginViewState extends State<LoginView> {
                 ButtonWidget(
                   title: 'Login',
                   hasBorder: false,
+                  onTapFunction: () {
+                    bool isValidUser = model.isValidUser(email, password);
+                    if(isValidUser) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeUserView()),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Wrong Email or Password!'))
+                      );
+                    }
+                  },
                 ),
               ],
             ),

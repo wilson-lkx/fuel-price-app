@@ -10,12 +10,13 @@ class HomeModel extends ChangeNotifier {
 
   get isValid => _isValid;
   bool _isValid = false;
-  void isValidEmail(String input) {
-    if (input == 'abc@gmail.com') {
+  bool isValidUser(String email, String password) {
+    if (email == 'admin@gmail.com' && password == 'admin') {
       _isValid = true;
     } else {
       _isValid = false;
     }
     notifyListeners();
+    return _isValid;
   }
 }

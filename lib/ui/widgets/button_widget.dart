@@ -4,10 +4,12 @@ import 'package:fuel_app/ui/theme/global.dart';
 class ButtonWidget extends StatelessWidget {
   final String title;
   final bool hasBorder;
+  final Function onTapFunction;
 
   ButtonWidget({
     this.title,
     this.hasBorder,
+    this.onTapFunction,
   });
 
   @override
@@ -39,6 +41,7 @@ class ButtonWidget extends StatelessWidget {
               ),
             ),
           ),
+          onTap: onTapFunction,
         ),
       ),
     );
