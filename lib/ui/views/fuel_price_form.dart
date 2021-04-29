@@ -7,6 +7,8 @@ import 'package:fuel_app/model/fuel_price.dart';
 import 'package:fuel_app/rest_client/fuel_price_client.dart';
 import 'package:intl/intl.dart';
 
+import 'home_admin.dart';
+
 class FuelPriceFormView extends StatefulWidget {
   @override
   _FuelPriceFormViewState createState() => _FuelPriceFormViewState();
@@ -154,7 +156,7 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
 
                             Navigator.push(context,
                                 MaterialPageRoute(
-                                    // builder: (context) => MyApp()
+                                    builder: (context) => HomeAdminView()
                                 )
                             );
                           }

@@ -28,8 +28,18 @@ class _LoginViewState extends State<LoginView> {
       body: Stack(
         children: <Widget>[
           Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [
+                      Color(0xffa18cd1),
+                      Color(0xfffbc2eb),
+                      // Color(0xfffbc2eb),
+                      Color(0xffa6c1ee),
+                    ]
+                )
+            ),
             height: size.height - 200,
-            color: Colors.blueAccent,
+            // color: Colors.blueAccent,
           ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 500),
@@ -58,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30, bottom: 210),
+            padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[

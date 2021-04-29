@@ -32,12 +32,10 @@ class _FuelPriceViewState extends State<FuelPriceView> {
 
   @override
   Widget build(BuildContext context) {
-    return _buildFuelDisplayView();
-  }
+    var size = MediaQuery.of(context).size;
 
-  Widget _buildFuelDisplayView() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Flexible(
           child: _buildDatePicker(),
@@ -73,6 +71,7 @@ class _FuelPriceViewState extends State<FuelPriceView> {
     );
   }
 
+
   Widget _buildListTitle(String title, String subtitle) {
     return Flexible(
         child: Card(
@@ -86,7 +85,7 @@ class _FuelPriceViewState extends State<FuelPriceView> {
 
   _buildDatePicker() {
     return TextButton.icon(
-      icon: Icon(Icons.calendar_today),
+      icon: Icon(Icons.calendar_today_outlined),
       onPressed: () async {
         final DateTime pickedDate = await showDatePicker(
             context: context,
