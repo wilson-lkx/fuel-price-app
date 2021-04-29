@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_app/model/home.model.dart';
+import 'package:fuel_app/model/role.dart';
+import 'package:fuel_app/model/user.dart';
+import 'package:fuel_app/rest_client/role_client.dart';
+import 'package:fuel_app/rest_client/user_client.dart';
 import 'package:fuel_app/ui/theme/global.dart';
-import 'package:fuel_app/ui/views/fuel_price_display.dart';
+import 'package:fuel_app/ui/views/home_admin.dart';
 import 'package:fuel_app/ui/views/home_user.dart';
 import 'package:fuel_app/ui/widgets/button_widget.dart';
 import 'package:fuel_app/ui/widgets/textfield_widget.dart';
@@ -31,15 +35,12 @@ class _LoginViewState extends State<LoginView> {
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     colors: [
-                      Color(0xffa18cd1),
-                      Color(0xfffbc2eb),
-                      // Color(0xfffbc2eb),
-                      Color(0xffa6c1ee),
+                      Global.color4,
+                      Global.color5,
                     ]
                 )
             ),
             height: size.height - 200,
-            // color: Colors.blueAccent,
           ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 500),
@@ -101,18 +102,39 @@ class _LoginViewState extends State<LoginView> {
                 ButtonWidget(
                   title: 'Login',
                   hasBorder: false,
-                  onTapFunction: () {
-                    bool isValidUser = model.isValidUser(email, password);
-                    if(isValidUser) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeUserView()),
-                      );
+                  onTapFunction: () async {
+                    // bool isValidUser = model.isValidUser(email, password);
+                    User user = await login(email, password);
+                    if(user.id != 0) {
+                      Role role = await getRoleByUserId(user.id);
+
+                      if(role.name == 'ADMIN') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeAdminView()
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeUserView(username: 'Hello')
+                          ),
+                        );
+                      }
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Wrong Email or Password!'))
                       );
                     }
+                  },
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                ButtonWidget(
+                  title: 'Sign Up',
+                  hasBorder: true,
+                  onTapFunction: ()  {
                   },
                 ),
               ],

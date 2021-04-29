@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fuel_app/main.dart';
 import 'package:fuel_app/model/fuel_price.dart';
 import 'package:fuel_app/rest_client/fuel_price_client.dart';
+import 'package:fuel_app/ui/theme/global.dart';
 import 'package:intl/intl.dart';
 
 import 'home_admin.dart';
@@ -26,14 +27,17 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Form(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Global.mediumBlue,
+        title: Text('Fuel Price Form'),
+      ),
+        body: Form(
             key: _formKey,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
-                // mainAxisSize: MainAxisSize.max,
-                // mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   DateTimeField(
                     decoration: InputDecoration(

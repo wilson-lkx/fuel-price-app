@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fuel_app/rest_client/fuel_price_client.dart';
+import 'package:fuel_app/ui/theme/global.dart';
 import 'package:intl/intl.dart';
 
 class FuelPriceView extends StatefulWidget {
@@ -85,7 +86,7 @@ class _FuelPriceViewState extends State<FuelPriceView> {
 
   _buildDatePicker() {
     return TextButton.icon(
-      icon: Icon(Icons.calendar_today_outlined),
+      icon: Icon(Icons.calendar_today_outlined, color: Global.mediumBlue),
       onPressed: () async {
         final DateTime pickedDate = await showDatePicker(
             context: context,
@@ -101,7 +102,10 @@ class _FuelPriceViewState extends State<FuelPriceView> {
         }
       },
       label: Text(
-          dateFormat.format(currentDate)
+        dateFormat.format(currentDate),
+        style: TextStyle(
+            color: Global.mediumBlue
+        ),
       ),
     );
   }
