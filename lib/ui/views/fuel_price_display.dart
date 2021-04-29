@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fuel_app/rest_client/fuel_price_client.dart';
 import 'package:intl/intl.dart';
 
-class FuelPriceDisplayScreen extends StatefulWidget {
+class FuelPriceView extends StatefulWidget {
   @override
-  _FuelPriceDisplayScreenState createState() => _FuelPriceDisplayScreenState();
+  _FuelPriceViewState createState() => _FuelPriceViewState();
 }
 
-class _FuelPriceDisplayScreenState extends State<FuelPriceDisplayScreen> {
+class _FuelPriceViewState extends State<FuelPriceView> {
   final dateFormat = DateFormat("dd-MM-yyyy");
   DateTime currentDate = DateTime.now();
   String ron95 = '-';
@@ -32,7 +32,11 @@ class _FuelPriceDisplayScreenState extends State<FuelPriceDisplayScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return _buildFuelDisplayView();
+  }
+
+  Widget _buildFuelDisplayView() {
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Flexible(

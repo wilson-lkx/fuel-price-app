@@ -7,12 +7,12 @@ import 'package:fuel_app/model/fuel_price.dart';
 import 'package:fuel_app/rest_client/fuel_price_client.dart';
 import 'package:intl/intl.dart';
 
-class FuelPriceFormScreen extends StatefulWidget {
+class FuelPriceFormView extends StatefulWidget {
   @override
-  _FuelPriceFormScreenState createState() => _FuelPriceFormScreenState();
+  _FuelPriceFormViewState createState() => _FuelPriceFormViewState();
 }
 
-class _FuelPriceFormScreenState extends State<FuelPriceFormScreen> {
+class _FuelPriceFormViewState extends State<FuelPriceFormView> {
   final format = DateFormat("yyyy-MM-dd");
   final _formKey = GlobalKey<FormState>();
 
@@ -154,7 +154,7 @@ class _FuelPriceFormScreenState extends State<FuelPriceFormScreen> {
 
                             Navigator.push(context,
                                 MaterialPageRoute(
-                                    builder: (context) => MyApp()
+                                    // builder: (context) => MyApp()
                                 )
                             );
                           }
