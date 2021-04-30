@@ -35,40 +35,54 @@ class _FuelPriceViewState extends State<FuelPriceView> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Flexible(
-          child: _buildDatePicker(),
-        ),
-        Flexible(
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(
+            child: _buildDatePicker(),
+          ),
+          SizedBox(
+            width: 150,
+            height: 80,
             child: Card(
                 color: Colors.yellow,
-                child: ListTile(
-                  title: Text('Price of RON95/litre'),
-                  subtitle: Text('RM $ron95'),
+                child: Center(
+                  child: ListTile(
+                    title: Text('RON95', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white), textAlign: TextAlign.center),
+                    subtitle: Text('RM $ron95', style: TextStyle(fontSize: 16, color: Colors.white), textAlign: TextAlign.center),
+                  ),
                 )
-            )
-        ),
-        Flexible(
+            ),
+          ),
+          SizedBox(
+            width: 150,
+            height: 80,
             child: Card(
                 color: Colors.green,
-                child: ListTile(
-                  title: Text('Price of RON97/litre'),
-                  subtitle: Text('RM $ron97'),
+                child: Center(
+                  child: ListTile(
+                    title: Text('RON97', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white), textAlign: TextAlign.center),
+                    subtitle: Text('RM $ron97', style: TextStyle(fontSize: 16, color: Colors.white), textAlign: TextAlign.center),
+                  ),
                 )
-            )
-        ),
-        Flexible(
+            ),
+          ),
+          SizedBox(
+            width: 150,
+            height: 80,
             child: Card(
-                color: Colors.black45,
-                child: ListTile(
-                  title: Text('Price of DIESEL/litre'),
-                  subtitle: Text('RM $diesel'),
+                color: Colors.black,
+                child: Center(
+                  child: ListTile(
+                    title: Text('DIESEL', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white), textAlign: TextAlign.center),
+                    subtitle: Text('RM $diesel', style: TextStyle(fontSize: 16, color: Colors.white), textAlign: TextAlign.center),
+                  ),
                 )
-            )
-        ),
-      ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

@@ -40,9 +40,11 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   DateTimeField(
+                    cursorColor: Global.mediumBlue,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.date_range),
                       labelText: 'From',
+                      icon: Icon(Icons.date_range, color: Global.mediumBlue),
+                      labelStyle: TextStyle(color: Global.mediumBlue),
                     ),
                     format: format,
                     onShowPicker: (context, currentValue) {
@@ -65,9 +67,11 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
                     },
                   ),
                   DateTimeField(
+                    cursorColor: Global.mediumBlue,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.date_range),
                       labelText: 'Until',
+                      icon: Icon(Icons.date_range, color: Global.mediumBlue),
+                      labelStyle: TextStyle(color: Global.mediumBlue),
                     ),
                     format: format,
                     onShowPicker: (context, currentValue) {
@@ -90,9 +94,11 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
                     },
                   ),
                   TextFormField(
+                    cursorColor: Global.mediumBlue,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.monetization_on),
                       labelText: 'Ron 95 Price',
+                      icon: Icon(Icons.monetization_on, color: Global.mediumBlue),
+                      labelStyle: TextStyle(color: Global.mediumBlue),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -106,9 +112,11 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
                     },
                   ),
                   TextFormField(
+                    cursorColor: Global.mediumBlue,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.monetization_on),
                       labelText: 'Ron 97 Price',
+                      icon: Icon(Icons.monetization_on, color: Global.mediumBlue),
+                      labelStyle: TextStyle(color: Global.mediumBlue),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -122,9 +130,11 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
                     },
                   ),
                   TextFormField(
+                    cursorColor: Global.mediumBlue,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.monetization_on),
                       labelText: 'Diesel Price',
+                      icon: Icon(Icons.monetization_on, color: Global.mediumBlue),
+                      labelStyle: TextStyle(color: Global.mediumBlue),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -142,6 +152,9 @@ class _FuelPriceFormViewState extends State<FuelPriceFormView> {
                     child: Center(
                       child: ElevatedButton(
                         child: Text('Submit'),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Global.mediumBlue),
+                        ),
                         onPressed: () async {
                           if(_formKey.currentState.validate()) {
                             var requestBody = FuelPrice(

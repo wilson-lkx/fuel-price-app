@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fuel_app/model/home.model.dart';
 import 'package:fuel_app/model/role.dart';
 import 'package:fuel_app/model/user.dart';
+import 'package:fuel_app/model/user_info.dart';
 import 'package:fuel_app/rest_client/role_client.dart';
 import 'package:fuel_app/rest_client/user_client.dart';
+import 'package:fuel_app/rest_client/user_info_client.dart';
 import 'package:fuel_app/ui/theme/global.dart';
 import 'package:fuel_app/ui/views/home_admin.dart';
 import 'package:fuel_app/ui/views/home_user.dart';
@@ -20,6 +22,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   String email;
   String password;
+  String username;
 
   @override
   Widget build(BuildContext context) {
@@ -107,17 +110,22 @@ class _LoginViewState extends State<LoginView> {
                     User user = await login(email, password);
                     if(user.id != 0) {
                       Role role = await getRoleByUserId(user.id);
+                      UserInfo info = await getInfoByUserId(user.id);
+
+                      setState(() {
+                        username = '${info.userFirstName} ${info.userLastName}';
+                      });
 
                       if(role.name == 'ADMIN') {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HomeAdminView()
+                          MaterialPageRoute(builder: (context) => HomeAdminView(username: '$username')
                           ),
                         );
                       } else {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HomeUserView(username: 'Hello')
+                          MaterialPageRoute(builder: (context) => HomeUserView(username: '$username')
                           ),
                         );
                       }
@@ -128,15 +136,15 @@ class _LoginViewState extends State<LoginView> {
                     }
                   },
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                ButtonWidget(
-                  title: 'Sign Up',
-                  hasBorder: true,
-                  onTapFunction: ()  {
-                  },
-                ),
+                // SizedBox(
+                //   height: 10.0,
+                // ),
+                // ButtonWidget(
+                //   title: 'Sign Up',
+                //   hasBorder: true,
+                //   onTapFunction: ()  {
+                //   },
+                // ),
               ],
             ),
           ),

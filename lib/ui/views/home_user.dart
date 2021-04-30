@@ -21,7 +21,7 @@ class _HomeUserViewState extends State<HomeUserView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Global.mediumBlue,
-        title: Text('Welcome ${widget.username}'),
+        title: Text('Welcome, ${widget.username}'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Global.mediumBlue,

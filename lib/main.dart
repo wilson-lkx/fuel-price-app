@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuel_app/ui/views/fuel_price_display.dart';
 import 'package:fuel_app/ui/views/home_user.dart';
 import 'package:fuel_app/ui/views/login.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -24,3 +24,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

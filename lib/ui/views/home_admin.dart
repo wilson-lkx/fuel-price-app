@@ -4,12 +4,16 @@ import 'package:fuel_app/ui/theme/global.dart';
 import 'fuel_price_form.dart';
 
 class HomeAdminView extends StatelessWidget {
+  final String username;
+
+  HomeAdminView({@required this.username});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Global.mediumBlue,
-        title: Text('Administrator'),
+        title: Text('$username'),
       ),
       body: Center(
         child: TextButton(
@@ -20,7 +24,10 @@ class HomeAdminView extends StatelessWidget {
               ),
             );
           },
-          child: Text('Add New Fuel Price'),
+          child: Text(
+              'Add New Fuel Price',
+              style: TextStyle(color: Global.mediumBlue)
+          ),
         ),
       ),
     );
