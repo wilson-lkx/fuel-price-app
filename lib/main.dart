@@ -12,25 +12,15 @@ void main() {
   );
 }
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ChangeNotifierProvider(
-//       create: (context) => HomeModel(),
-//       child: MaterialApp(
-//         debugShowCheckedModeBanner: false,
-//         home: LoginView(),
-//       ),
-//     );
-//   }
-// }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeUserView(username: 'Test'),
+    return ChangeNotifierProvider(
+      create: (context) => HomeModel(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: LoginView(),
+      ),
     );
   }
 }
